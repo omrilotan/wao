@@ -1,0 +1,17 @@
+{
+	"short_name": "wao",
+	"name": "Wrong Answers Only",
+	"icons": [
+		{
+			"src": "./wao.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	],
+	"start_url": "./",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"scope": "./",
+	"theme_color": "#ffffff",
+	"orientation": "landscape"
+}

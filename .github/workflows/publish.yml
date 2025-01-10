@@ -1,0 +1,29 @@
+name: Release
+on:
+  - push
+jobs:
+  build:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm i
+      - run: npm run format
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "😎 Autofix"
+      - name: "Exit if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: exit 1
+      - run: npm run build
+      - name: Publish gh-pahes
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

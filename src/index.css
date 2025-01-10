@@ -1,0 +1,48 @@
+:root {
+	--color-background: #fff;
+	--color-text: #000;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: #000;
+		--color-text: #fff;
+	}
+}
+* {
+	font-family: inherit;
+}
+body {
+	background-color: var(--color-background);
+	color: var(--color-text);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+	margin: 0;
+	font: 1rem/1.5 serif;
+	font-size: 1.1rem;
+}
+main {
+	padding: 1rem;
+}
+.small {
+	font-size: 0.8em;
+}
+.center {
+	text-align: center;
+}
+button {
+	border-radius: 1rem;
+	border: none;
+	padding: 0.5rem 1rem;
+	background: var(--color-text);
+	color: var(--color-background);
+	font-size: 1.2em;
+	font-weight: bold;
+	cursor: pointer;
+}
+a {
+	color: var(--color-text);
+	text-decoration: underline;
+}
