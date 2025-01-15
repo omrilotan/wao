@@ -29,7 +29,8 @@ document.querySelector("button").addEventListener(
 		const text = await response.text();
 		qNa.push(...parseSet(text).qNa);
 		const total = qNa.length;
-		const displayNextQuestion = () => qNa.length > 0
+		const displayNextQuestion = () =>
+			qNa.length > 0
 				? displayQNA(qNa.shift(), [qNa.length + 1, total].join("/"))
 				: displayOutOfQuestions();
 		button.addEventListener("click", displayNextQuestion, { once: false });

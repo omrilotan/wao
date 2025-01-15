@@ -53,9 +53,15 @@ footer {
 .center {
 	text-align: center;
 }
-h1 { font-size: 1.5em; }
-h2 { font-size: 1.3em; }
-h3 { font-size: 1.2em; }
+h1 {
+	font-size: 1.5em;
+}
+h2 {
+	font-size: 1.3em;
+}
+h3 {
+	font-size: 1.2em;
+}
 button {
 	border: none;
 	padding: 0.5rem 1rem;
