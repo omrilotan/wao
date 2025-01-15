@@ -28,14 +28,13 @@ document.querySelector("button").addEventListener(
 		if (!response.ok) throw new Error("Failed to fetch set. Please reload.");
 		const text = await response.text();
 		qNa.push(...parseSet(text).qNa);
+		const total = qNa.length;
+		const displayNextQuestion = () => qNa.length > 0
+				? displayQNA(qNa.shift(), [qNa.length + 1, total].join("/"))
+				: displayOutOfQuestions();
 		button.addEventListener("click", displayNextQuestion, { once: false });
 		displayNextQuestion();
 		button.textContent = "Next";
-
-		function displayNextQuestion() {
-			if (qNa.length > 0) return displayQNA(qNa.shift(), qNa.length);
-			displayOutOfQuestions();
-		}
 
 		function displayQNA(
 			{
@@ -45,7 +44,7 @@ document.querySelector("button").addEventListener(
 				question: string;
 				answer: string;
 			},
-			remaining: number,
+			remaining: string,
 		): void {
 			const fragment = document.createDocumentFragment();
 			const questionElement = document.createElement("h1");
@@ -61,7 +60,7 @@ document.querySelector("button").addEventListener(
 			fragment.appendChild(questionElement);
 			fragment.appendChild(answerElement);
 			fragment.appendChild(remainingElement);
-			empty("main").appendChild(fragment);
+			empty("section").appendChild(fragment);
 		}
 
 		function displayOutOfQuestions(): void {
@@ -80,7 +79,7 @@ document.querySelector("button").addEventListener(
 			paragraph.appendChild(link);
 			fragment.appendChild(title);
 			fragment.appendChild(paragraph);
-			empty("main").appendChild(fragment);
+			empty("section").appendChild(fragment);
 
 			button.removeEventListener("click", displayNextQuestion);
 			button.addEventListener(

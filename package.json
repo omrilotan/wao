@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf docs",
-    "start": "node --watch-path=src/public/sets --experimental-strip-types scripts/prepare.ts & parcel src/index.pug --out-dir docs & node --watch-path=src/public --experimental-strip-types scripts/copy.ts",
+    "start": "./scripts/start.sh",
     "prebuild": "rm -rf docs && node --experimental-strip-types scripts/prepare.ts",
     "build": "parcel build src/index.pug --out-dir docs --public-url .",
     "postbuild": "node --experimental-strip-types scripts/copy.ts",
